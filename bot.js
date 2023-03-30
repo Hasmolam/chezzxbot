@@ -62,4 +62,4 @@
     console.log('Bot başarıyla çalışıyor!');
   });
 
-  client.login('MTA4Nzc4MDQwNTc4NjE4MTY2Mw.GwI2l9.pppBvVvqntDNlbMgACg4surwAQhaRn9vMSf5WQ');
+  client.login('TOKEN');
