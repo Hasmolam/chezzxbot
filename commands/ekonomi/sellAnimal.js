@@ -36,6 +36,8 @@ function sellAnimal(message, args) {
 
   if (animal.count === 0) {
     delete message.client.zoo[userId][animalId];
+  } else {
+    message.client.zoo[userId][animalId].count = animal.count;
   }
 
   zoo(message);

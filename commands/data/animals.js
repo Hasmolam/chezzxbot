@@ -13,7 +13,13 @@ const animals = [
   { id: 9, name: 'Gorilla', emoji: '🦍', value: 230, change: 0.06, class: 'rare' },
   { id: 10, name: 'Leopard', emoji: '🐆', value: 130, change: 0.22, class: 'common' },
   { id: 11, name: 'Ostrich', emoji: '🦢', value: 95, change: 0.28, class: 'common' },
-  { id: 12, name: 'Monkey', emoji: '🐒', value: 100000, change: 0.01, class: 'HABEŞ' },
+  { id: 12, name: 'Monkey', emoji: '🐒', value: 20000, change: 0.001, class: 'HABEŞ' },
+  { id: 13, name: 'Phoenix', emoji: '🦅', value: 5000, change: 0.005, class: 'legendary' },
+  { id: 14, name: 'Dragon', emoji: '🐲', value: 10000, change: 0.003, class: 'mythical' },
+  { id: 15, name: 'Kraken', emoji: '🦑', value: 8000, change: 0.006, class: 'epic' },
+  { id: 16, name: 'Unicorn', emoji: '🦄', value: 7000, change: 0.008, class: 'rare' },
+  { id: 17, name: 'Yeti', emoji: '❄️', value: 6000, change: 0.01, class: 'rare' },
+  { id: 18, name: 'Chimera', emoji: '🐲', value: 9000, change: 0.004, class: 'mythical' },
 ];
 
 module.exports.animals = animals;

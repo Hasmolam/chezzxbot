@@ -32,12 +32,19 @@ function hunt(message) {
   const animal = animals[randomId];
   const value = animal.value;
 
+  
   if (animal.class === 'common') {
     message.reply(`Avlandın! ${animal.emoji} ${animal.name}.`);
   } else if (animal.class === 'rare') {
     message.reply(`İnanılmaz! ${animal.emoji} ${animal.name} avladın!`);
   } else if (animal.class === 'HABEŞ') {
-    message.reply(`Efsanevi! ${animal.emoji} ${animal.name} avlandın!`);
+    message.reply(`HABEŞ Mİ! ${animal.emoji} ${animal.name} avlandın!`);
+  } else if (animal.class === 'legendary') {
+    message.reply(`EFSANEVİ! ${animal.emoji} ${animal.name} avladın!`);
+  } else if (animal.class === 'mythical') {
+    message.reply(`DESTANSI! ${animal.emoji} ${animal.name} avlandın!`);
+  } else if (animal.class === 'epic') {
+    message.reply(`İNANILMAZ! ${animal.emoji} ${animal.name} avlandın!`);
   }
   
 
