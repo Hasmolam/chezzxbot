@@ -62,4 +62,4 @@ client.on('ready', () => {
   console.log('Bot başarıyla çalışıyor!');
 });
 
-client.login('MTA4Nzc4MDQwNTc4NjE4MTY2Mw.GeICCn.qlFxc6oeSGkLq--eQXD-OyG_kc-ZGtsEo8bFRw');
+client.login('TOKEN');
