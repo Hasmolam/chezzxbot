@@ -2,23 +2,45 @@
 
 const { animals } = require('../data/animals.js');
 const { money } = require('../../bot.js');
+const { zoo } = require('../data/zoo.js');
 
 function sellAnimal(message, args) {
-  const id = parseInt(args[0]);
-  const animal = animals.find(animal => animal.id === id);
+  const animalId = parseInt(args[0]);
+  const count = parseInt(args[1]) || 1;
+  const userId = message.author.id;
 
-  if (!animal) {
+  if (!message.client.zoo || !message.client.zoo[userId]) {
     return message.reply(`Hayvan bulunamadı. Lütfen doğru bir ID girin.`);
   }
 
-  const value = animal.value;
-  const userId = message.author.id;
-  const userMoney = money[userId];
+  const animalData = message.client.zoo[userId][animalId];
 
+  if (!animalData) {
+    return message.reply(`Hayvan bulunamadı. Lütfen doğru bir ID girin.`);
+  }
+
+  const animal = {
+    id: animalId,
+    name: animalData.name,
+    value: animalData.value,
+    count: animalData.count
+  };
+
+  if (animal.count < count) {
+    return message.reply(`Yeterli sayıda hayvanınız yok. Lütfen doğru bir sayı girin.`);
+  }
+
+  const value = animal.value * count;
   money[userId] += value;
-  animals.splice(animals.indexOf(animal), 1);
+  animal.count -= count;
+
+  if (animal.count === 0) {
+    delete message.client.zoo[userId][animalId];
+  }
+
+  zoo(message);
   module.exports.money = money;
-  message.reply(`Tebrikler, ${animal.name} hayvanını başarıyla ${value} para karşılığında sattınız!`);
+  message.reply(`Tebrikler, ${count} adet ${animal.name} hayvanını başarıyla ${value} para karşılığında sattınız!`);
 }
 
 module.exports.sellAnimal = sellAnimal;

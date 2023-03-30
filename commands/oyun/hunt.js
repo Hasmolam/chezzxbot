@@ -16,12 +16,30 @@ function hunt(message) {
   }
 
   const animalIds = Object.keys(animals);
-  const randomId = animalIds[Math.floor(Math.random() * animalIds.length)];
+  const sumOfChanges = animals.reduce((sum, animal) => sum + animal.change, 0);
+  let randomValue = Math.random() * sumOfChanges;
+  let randomId;
+  for (let i = 0; i < animalIds.length; i++) {
+    const animal = animals[animalIds[i]];
+    randomValue -= animal.change;
+    if (randomValue <= 0) {
+     randomId = animalIds[i];
+     break;
+  }
+}
+
 
   const animal = animals[randomId];
   const value = animal.value;
 
-  message.reply(`Avlandın! ${animal.emoji} ${animal.name} seni ${value} para kazandırdı!`);
+  if (animal.class === 'common') {
+    message.reply(`Avlandın! ${animal.emoji} ${animal.name}.`);
+  } else if (animal.class === 'rare') {
+    message.reply(`İnanılmaz! ${animal.emoji} ${animal.name} avladın!`);
+  } else if (animal.class === 'HABEŞ') {
+    message.reply(`Efsanevi! ${animal.emoji} ${animal.name} avlandın!`);
+  }
+  
 
   if (!message.client.money) {
     message.client.money = {};

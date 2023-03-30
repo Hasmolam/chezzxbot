@@ -24,7 +24,7 @@ function giveMoney(message, args) {
     return;
   }
   if (senderId === recipientId) {
-    message.channel.send(`Kendinize para gönderemezsiniz.`);
+    message.channel.send(`Bu kadar yalnız olamazsın.`);
     return;
   }
 

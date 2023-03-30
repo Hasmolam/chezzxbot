@@ -28,11 +28,16 @@ function zoo(message) {
         return;
       }
 
-      animalList += `${animal.emoji} ${animal.name}\nId: ${animalId}\nAdet: ${animalData.count}\nDeğer: ${animalData.value} 💰\n\n`;
+      animalList += `${animal.emoji} **${animal.name}** [${animalId}] x${animalData.count}\n`;
     });
   }
 
-  message.channel.send(`**${message.author.username}'in hayvanat bahçesi:**\n\n${animalList}`);
+  const embed = new MessageEmbed()
+    .setColor('#0099ff')
+    .setTitle(`${message.author.username}'in Hayvanat Bahçesi`)
+    .setDescription(animalList);
+
+  message.channel.send(embed);
 }
 
 module.exports.zoo = zoo;
